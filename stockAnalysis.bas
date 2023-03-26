@@ -1,5 +1,4 @@
 Attribute VB_Name = "Module1"
-
 Sub stockAnalysis()
 
     ' add column titles to I, J, K, and L columns
@@ -43,14 +42,14 @@ Sub stockAnalysis()
         volCounter = volCounter + Cells(i, 7).Value
     
         ' if it's the first date, save that opening price
-        If Cells(i, 2).Value = 20200102 Then
+        If Cells(i, 2).Value = StartDate Then
         
             openPrice = Cells(i, 3).Value
         
         End If
         
         ' if it's the last date, save the closing price
-        If Cells(i, 2).Value = 20201231 Then
+        If Cells(i, 2).Value = EndDate Then
         
             closePrice = Cells(i, 6).Value
             
@@ -58,7 +57,7 @@ Sub stockAnalysis()
             arrayRow = arrayRow + 1
         
             ' calculate yearlyChange and insert into column J
-            yearlyChg = openPrice - closePrice
+            yearlyChg = closePrice - openPrice
             Cells(arrayRow, 10).Value = yearlyChg
             
             ' if yearly change is positive, color the yearlyChg cell green
@@ -97,4 +96,5 @@ Sub stockAnalysis()
         
     Next i
 End Sub
+
 
